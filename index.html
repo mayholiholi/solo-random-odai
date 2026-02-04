@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>キャラクターとお題のペア生成</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <div class="input-section">
+      <h2>キャラクターとお題を入力してください</h2>
+      <p>カンマまたは改行で複数の項目を入力してください（例: 上田, 高橋, 山田, 佐藤, 鈴木, 田中, 中村, 小林）</p>
+      <textarea placeholder="キャラクターを入力" v-model="characterInput"></textarea>
+      <textarea placeholder="お題を入力" v-model="topicInput"></textarea>
+      <button @click="generatePairs">生成</button>
+    </div>
+    <div id="result">
+      <h2>生成された組み合わせ</h2>
+      <ul>
+        <li v-for="(pair, index) in pairs" :key="index">
+          <strong>{{ pair.character }}</strong> - {{ pair.topic }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
