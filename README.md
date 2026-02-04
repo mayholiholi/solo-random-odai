@@ -1,9 +1,7 @@
 # お題ガチャ
 
+https://mayholiholi.github.io/solo-random-odai/
+
 キャラクターとお題をランダムにペアリングするツール。
 
 カンマ区切りでキャラクターとお題を入力すると、ランダムな組み合わせを生成してリスト表示する。一人遊びのお絵描きお題出しなどに。
-
-## デモ
-
-https://mayholiholi.github.io/solo-random-odai/
