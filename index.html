@@ -3,28 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>キャラクターとお題のペア生成</title>
+  <title>お題ガチャ</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="app">
-    <div class="input-section">
-      <h2>キャラクターとお題を入力してください</h2>
-      <p>カンマまたは改行で複数の項目を入力してください（例: 上田, 高橋, 山田, 佐藤, 鈴木, 田中, 中村, 小林）</p>
-      <textarea placeholder="キャラクターを入力" v-model="characterInput"></textarea>
-      <textarea placeholder="お題を入力" v-model="topicInput"></textarea>
-      <button @click="generatePairs">生成</button>
+  <div class="container">
+    <!-- ヘッダー -->
+    <header class="header">
+      <h1 class="title">お題ガチャ</h1>
+      <button class="theme-btn" id="themeToggle" aria-label="テーマ切替">
+        <span id="themeIcon"></span>
+      </button>
+    </header>
+
+    <!-- 入力カード -->
+    <section class="card input-card">
+      <div class="input-group">
+        <label for="characterInput" class="label">キャラクター</label>
+        <textarea id="characterInput" class="textarea" placeholder="カンマまたは改行で区切って入力" rows="2"></textarea>
+      </div>
+      <div class="input-group">
+        <label for="topicInput" class="label">お題</label>
+        <textarea id="topicInput" class="textarea" placeholder="カンマまたは改行で区切って入力" rows="2"></textarea>
+      </div>
+    </section>
+
+    <!-- ボタン -->
+    <div class="btn-row">
+      <button class="btn btn-primary" id="generateBtn">生成する</button>
+      <button class="btn btn-secondary" id="shuffleBtn" disabled>もう一回</button>
     </div>
-    <div id="result">
-      <h2>生成された組み合わせ</h2>
-      <ul>
-        <li v-for="(pair, index) in pairs" :key="index">
-          <strong>{{ pair.character }}</strong> - {{ pair.topic }}
-        </li>
-      </ul>
-    </div>
+
+    <!-- 結果 -->
+    <section class="results" id="resultSection" hidden>
+      <p class="results-count" id="resultCount"></p>
+      <ul class="result-list" id="resultList" aria-live="polite"></ul>
+
+      <div class="leftover" id="leftoverSection" hidden>
+        <p class="leftover-title" id="leftoverLabel"></p>
+        <p class="leftover-text" id="leftoverItems"></p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <a href="https://mayholiholi.github.io/" class="footer-link">mayholiholi</a>
+    </footer>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
   <script src="script.js"></script>
 </body>
 </html>
